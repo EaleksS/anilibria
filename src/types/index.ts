@@ -1,29 +1,35 @@
-export { YouTubeT, YouTubeDataT } from "./YouTubeT";
-export { FeedT } from "./FeedT";
-export { TitleT, TitlesT, TitlesDataT } from "./TitleT";
-export { TeamT } from "./TeamT";
+import { SVGProps } from 'react'
 
-export type YearsT = Array<number>;
+export type { FeedT } from './FeedT'
+export type { TeamT } from './TeamT'
+export type { TitleT, TitlesDataT, TitlesT } from './TitleT'
+export type { YouTubeDataT, YouTubeT } from './YouTubeT'
 
-export type GenresT = Array<string>;
+export type IconSvgProps = SVGProps<SVGSVGElement> & {
+	size?: number
+}
 
-export {
-  YouTubeRequestOptionsT,
-  FeedRequestOptionsT,
-  TitleRequestOptionsT,
-  TitleListRequestOptionsT,
-  TitleUpdateRequestOptionsT,
-  TitleChangesRequestOptionsT,
-  TitleScheduleRequestOptionsT,
-  TitleRandomRequestOptionsT,
-  TitleSearchRequestOptionsT,
-  TitleSearchAdvancedRequestOptionsT,
-  TorrentSeed_statsRequestOptionsT,
-  TorrentRSSRequestOptionsT,
-} from "./RequestOptions";
+export type YearsT = Array<number>
 
-export {
-  UserRequestOptionsT,
-  UserFavoritesRequestOptionsT,
-  UserFAddDelRequestOptionsT,
-} from "./user";
+export type GenresT = Array<string>
+
+export type {
+	FeedRequestOptionsT,
+	TitleChangesRequestOptionsT,
+	TitleListRequestOptionsT,
+	TitleRandomRequestOptionsT,
+	TitleRequestOptionsT,
+	TitleScheduleRequestOptionsT,
+	TitleSearchAdvancedRequestOptionsT,
+	TitleSearchRequestOptionsT,
+	TitleUpdateRequestOptionsT,
+	TorrentRSSRequestOptionsT,
+	TorrentSeed_statsRequestOptionsT,
+	YouTubeRequestOptionsT,
+} from './RequestOptions'
+
+export type {
+	UserFAddDelRequestOptionsT,
+	UserFavoritesRequestOptionsT,
+	UserRequestOptionsT,
+} from './user'
