@@ -2,12 +2,18 @@ import { getAnilibria } from '@/service/anilibria.service'
 import { Metadata } from 'next'
 
 async function getTitle(code: string) {
-	return await getAnilibria
-		.title(`?code=${code}`)
-		.then(res => res)
-		.catch((err: Error) => {
-			throw new Error(err.message)
-		})
+	try {
+		return await getAnilibria
+			.title(`?code=${code}`)
+			.then(res => res)
+			.catch((err: Error) => {
+				throw new Error(err.message)
+			})
+	} catch (error) {
+		console.error(error)
+
+		return null
+	}
 }
 
 interface generateMetadataProps {
@@ -21,14 +27,14 @@ export async function generateMetadata({
 
 	const metadata: Metadata = {
 		title: data?.names?.ru ?? code,
-		description: String(data.description ?? code),
+		description: String(data?.description ?? code),
 		openGraph: {
 			images: [
-				'https://static-libria.weekstorm.one/' + data.posters.small.url,
-				'https://static-libria.weekstorm.one/' + data.posters.medium.url,
-				'https://static-libria.weekstorm.one/' + data.posters.original.url,
+				'https://static-libria.weekstorm.one/' + data?.posters.small.url,
+				'https://static-libria.weekstorm.one/' + data?.posters.medium.url,
+				'https://static-libria.weekstorm.one/' + data?.posters.original.url,
 			],
-			description: String(data.description ?? code),
+			description: String(data?.description ?? code),
 			title: data?.names?.ru ?? code,
 			type: 'website',
 			url: `/title/${code}`,
@@ -38,13 +44,15 @@ export async function generateMetadata({
 			icon: [
 				{
 					media: '(prefers-color-scheme: light)',
-					url: 'https://static-libria.weekstorm.one/' + data.posters.small.url,
-					href: 'https://static-libria.weekstorm.one/' + data.posters.small.url,
+					url: 'https://static-libria.weekstorm.one/' + data?.posters.small.url,
+					href:
+						'https://static-libria.weekstorm.one/' + data?.posters.small.url,
 				},
 				{
 					media: '(prefers-color-scheme: dark)',
-					url: 'https://static-libria.weekstorm.one/' + data.posters.small.url,
-					href: 'https://static-libria.weekstorm.one/' + data.posters.small.url,
+					url: 'https://static-libria.weekstorm.one/' + data?.posters.small.url,
+					href:
+						'https://static-libria.weekstorm.one/' + data?.posters.small.url,
 				},
 			],
 		},
