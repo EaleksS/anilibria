@@ -9,8 +9,6 @@ export const Player: React.FC<playerT> = ({ ...props }) => {
 	const [episodes, setEpisodes] = React.useState<any>('1')
 	const [hls, setHls] = React.useState<'hd' | 'fhd' | 'sd'>('hd')
 
-	const player = React.useMemo(() => {}, [episodes, hls])
-
 	return (
 		<>
 			<ButtonGroup variant='flat' color='primary'>
