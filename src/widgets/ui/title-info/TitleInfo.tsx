@@ -77,7 +77,7 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 						</ul>
 					</div>
 					<div className='p-3 bg-black/20 rounded-large h-max backdrop-blur-sm mt-3 flex flex-col gap-3 items-start'>
-						<Player {...query.data?.player} />
+						<Player player={query.data?.player} />
 					</div>
 				</div>
 			</div>
