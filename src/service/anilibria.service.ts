@@ -4,7 +4,7 @@ import axios from 'axios'
 const img_url = 'https://static-libria.weekstorm.one'
 const video_url = 'https://cache.libria.fun'
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_ORIGIN_URL as string
+// axios.defaults.baseURL = process.env.NEXT_PUBLIC_ORIGIN_URL as string
 
 export const getAnilibria = {
 	async search(params?: string, sort?: string) {
