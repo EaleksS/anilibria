@@ -60,7 +60,7 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 						<ul className=''>
 							<li>
 								<span className='text-white/60'>Статус:</span>{' '}
-								{query.data?.status.string ?? '-'}
+								{query.data?.status?.string ?? '-'}
 							</li>
 							<li>
 								<span className='text-white/60'>Год:</span>{' '}

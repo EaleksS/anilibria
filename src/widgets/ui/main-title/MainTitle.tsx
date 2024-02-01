@@ -55,7 +55,7 @@ export const MainTitle: React.FC = () => {
 				<ul className='flex gap-3'>
 					<li>
 						<span className='text-white/60'>Статус:</span>{' '}
-						{query.data?.status.string ?? '-'}
+						{query.data?.status?.string ?? '-'}
 					</li>
 					<li>
 						<span className='text-white/60'>Год:</span>{' '}

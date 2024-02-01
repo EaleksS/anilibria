@@ -5,6 +5,7 @@ export const useRandomTitleQuery = (sort?: string) => {
 	const query = useSuspenseQuery({
 		queryKey: ['random', sort],
 		queryFn: () => getAnilibria.random(sort),
+		refetchOnWindowFocus: true,
 	})
 
 	return query
