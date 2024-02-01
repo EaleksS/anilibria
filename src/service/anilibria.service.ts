@@ -24,7 +24,11 @@ export const getAnilibria = {
 
 		return (await axios
 			.get(`/title/search${!!params ? params : ''}${!!sort ? sort : ''}`, {
-				headers: { Accept: 'application/json' },
+				headers: {
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'application/json',
+				},
 			})
 			.then(res => res.data)) as TitlesDataT
 	},
@@ -43,7 +47,11 @@ export const getAnilibria = {
 
 		return (await axios
 			.get(`/title${!!sort ? sort : ''}`, {
-				headers: { Accept: 'application/json' },
+				headers: {
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'application/json',
+				},
 			})
 			.then(res => res.data)) as TitleT
 	},
@@ -62,7 +70,11 @@ export const getAnilibria = {
 
 		return (await axios
 			.get(`/title/random${!!sort ? sort : ''}`, {
-				headers: { Accept: 'application/json' },
+				headers: {
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'application/json',
+				},
 			})
 			.then(res => res.data)) as TitleT
 	},
