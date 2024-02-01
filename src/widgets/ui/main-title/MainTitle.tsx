@@ -22,7 +22,7 @@ const LoadingJSX = () => {
 			</Skeleton>
 			<div className='flex gap-3'>
 				{[1, 2, 3, 4].map(e => (
-					<Skeleton className='w-[100px] h-[20px] rounded-lg'>
+					<Skeleton className='w-[100px] h-[20px] rounded-lg' key={e}>
 						<div className='w-full h-3 rounded-lg bg-default-300'></div>
 					</Skeleton>
 				))}

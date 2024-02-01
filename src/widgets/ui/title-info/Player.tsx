@@ -57,7 +57,7 @@ export const Player: React.FC<PlayerProps> = ({ ...props }) => {
 					size='sm'
 				>
 					{episodesData.map(episode => (
-						<SelectItem key={episode.value} value={episode.value}>
+						<SelectItem key={episode.value} value={episode.value} >
 							{episode.label}
 						</SelectItem>
 					))}
