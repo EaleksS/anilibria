@@ -1,8 +1,8 @@
 import { getAnilibria } from '@/service/anilibria.service'
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
 export const useTitleQuery = (sort?: string) => {
-	const query = useQuery({
+	const query = useSuspenseQuery({
 		queryKey: ['title', sort],
 		queryFn: () => getAnilibria.title(sort),
 		refetchOnWindowFocus: true,

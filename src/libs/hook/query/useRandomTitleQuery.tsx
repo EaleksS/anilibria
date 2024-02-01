@@ -1,8 +1,8 @@
 import { getAnilibria } from '@/service/anilibria.service'
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
 export const useRandomTitleQuery = (sort?: string) => {
-	const query = useQuery({
+	const query = useSuspenseQuery({
 		queryKey: ['random', sort],
 		queryFn: () => getAnilibria.random(sort),
 	})
