@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { Providers } from './provider'
 
-import { Footer } from '@/widgets/ui/footer/Footer'
 import clsx from 'clsx'
 import './globals.css'
 
@@ -28,7 +27,7 @@ export default function RootLayout({
 				<Providers>
 					<Header />
 					{children}
-					<Footer />
+					{/* <Footer /> */}
 				</Providers>
 			</body>
 		</html>

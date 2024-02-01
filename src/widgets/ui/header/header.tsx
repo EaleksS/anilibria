@@ -10,6 +10,7 @@ import {
 } from '@nextui-org/react'
 import Link from 'next/link'
 import React from 'react'
+import { UiDropdown } from './Dropdown'
 
 export const Header: React.FC = () => {
 	return (
@@ -31,11 +32,6 @@ export const Header: React.FC = () => {
 					</Button>
 				</NavbarItem>
 				<NavbarItem>
-					<Button as={Link} variant='light' href='/' size='sm'>
-						ТОПЫ
-					</Button>
-				</NavbarItem>
-				<NavbarItem>
 					<Button
 						variant='light'
 						size='sm'
@@ -47,17 +43,8 @@ export const Header: React.FC = () => {
 			</NavbarBrand>
 			<NavbarContent justify='end'>
 				<NavbarItem>
-					<Button
-						variant='light'
-						isIconOnly
-						className='rounded-full overflow-hidden'
-					>
-						<Image
-							src='https://remanga.org/media/users/64148/avatar_3HsytPG.jpg'
-							width='100'
-							height='100'
-						/>
-					</Button>
+					
+					<UiDropdown />
 				</NavbarItem>
 			</NavbarContent>
 		</Navbar>

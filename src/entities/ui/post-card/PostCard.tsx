@@ -6,8 +6,34 @@ import {
 	CardHeader,
 	Image,
 	Link,
+	Skeleton,
 } from '@nextui-org/react'
 import React from 'react'
+
+export const PostCardLoading = () => {
+	return (
+		<Card
+			shadow='sm'
+			className=' relative'
+			onPress={() => console.log('item pressed')}
+			fullWidth
+		>
+			<CardBody className='p-0'>
+				<Skeleton className='w-full h-[300px] rounded-lg'>
+					<div className='w-full h-3 rounded-lg bg-default-300'></div>
+				</Skeleton>
+			</CardBody>
+			<CardFooter className='flex flex-col gap-3'>
+				<Skeleton className='w-full h-[15px] rounded-lg'>
+					<div className='w-full h-3 rounded-lg bg-default-300'></div>
+				</Skeleton>
+				<Skeleton className='w-full h-[15px] rounded-lg'>
+					<div className='w-full h-3 rounded-lg bg-default-300'></div>
+				</Skeleton>
+			</CardFooter>
+		</Card>
+	)
+}
 
 export const PostCard: React.FC<TitleT> = ({ ...props }) => {
 	return (
@@ -33,7 +59,7 @@ export const PostCard: React.FC<TitleT> = ({ ...props }) => {
 					alt='manga'
 					className='w-full object-cover h-[200px] z-0 sm:h-[300px]'
 					width='100%'
-					src={`https://static-libria.weekstorm.one/${
+					src={`${process.env.NEXT_PUBLIC_IMG_URL}/${
 						props?.posters?.medium.url ?? '-'
 					}`}
 				/>

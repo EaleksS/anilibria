@@ -1,20 +1,62 @@
-import { getAnilibria } from '@/service/anilibria.service'
+// async function getTitle(code: string) {
+// 	try {
+// 		return await getAnilibria
+// 			.title(`?code=${code}`)
+// 			.then(res => res)
+// 			.catch((err: Error) => {
+// 				throw new Error(err.message)
+// 			})
+// 	} catch (error) {
+// 		console.error(error)
+
 import { Metadata } from 'next'
 
-async function getTitle(code: string) {
-	try {
-		return await getAnilibria
-			.title(`?code=${code}`)
-			.then(res => res)
-			.catch((err: Error) => {
-				throw new Error(err.message)
-			})
-	} catch (error) {
-		console.error(error)
+// 		return null
+// 	}
+// }
 
-		return null
-	}
-}
+// interface generateMetadataProps {
+// 	params: { code: string }
+// }
+
+// export async function generateMetadata({
+// 	params: { code },
+// }: generateMetadataProps) {
+// 	const data = await getTitle(code)
+
+// 	const metadata: Metadata = {
+// 		title: data?.names?.ru ?? code,
+// 		description: String(data?.description ?? code),
+// 		openGraph: {
+// 			images: [
+// 				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+// 				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.medium.url,
+// 				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.original.url,
+// 			],
+// 			description: String(data?.description ?? code),
+// 			title: data?.names?.ru ?? code,
+// 			type: 'website',
+// 			url: `/title/${code}`,
+// 		},
+
+// 		icons: {
+// 			icon: [
+// 				{
+// 					media: '(prefers-color-scheme: light)',
+// 					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+// 					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+// 				},
+// 				{
+// 					media: '(prefers-color-scheme: dark)',
+// 					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+// 					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+// 				},
+// 			],
+// 		},
+// 	}
+
+// 	return metadata
+// }
 
 interface generateMetadataProps {
 	params: { code: string }
@@ -23,39 +65,9 @@ interface generateMetadataProps {
 export async function generateMetadata({
 	params: { code },
 }: generateMetadataProps) {
-	const data = await getTitle(code)
-
 	const metadata: Metadata = {
-		title: data?.names?.ru ?? code,
-		description: String(data?.description ?? code),
-		openGraph: {
-			images: [
-				'https://static-libria.weekstorm.one/' + data?.posters.small.url,
-				'https://static-libria.weekstorm.one/' + data?.posters.medium.url,
-				'https://static-libria.weekstorm.one/' + data?.posters.original.url,
-			],
-			description: String(data?.description ?? code),
-			title: data?.names?.ru ?? code,
-			type: 'website',
-			url: `/title/${code}`,
-		},
-
-		icons: {
-			icon: [
-				{
-					media: '(prefers-color-scheme: light)',
-					url: 'https://static-libria.weekstorm.one/' + data?.posters.small.url,
-					href:
-						'https://static-libria.weekstorm.one/' + data?.posters.small.url,
-				},
-				{
-					media: '(prefers-color-scheme: dark)',
-					url: 'https://static-libria.weekstorm.one/' + data?.posters.small.url,
-					href:
-						'https://static-libria.weekstorm.one/' + data?.posters.small.url,
-				},
-			],
-		},
+		title: code,
+		description: code,
 	}
 
 	return metadata
