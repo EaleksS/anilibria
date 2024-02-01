@@ -25,7 +25,7 @@ const LoadingJSX = () => {
 				<div className='w-full h-3 rounded-lg bg-default-300'></div>
 			</Skeleton>
 			<div className='w-[250px] flex gap-3 flex-col'>
-				{[1, 2, 3, 4, 5, 6].map((e) => (
+				{[1, 2, 3, 4, 5, 6].map(e => (
 					<Skeleton className='w-full h-[15px] rounded-lg' key={e}>
 						<div className='w-full h-3 rounded-lg bg-default-300'></div>
 					</Skeleton>
@@ -42,22 +42,22 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 		<>
 			<div
 				className={clsx(
-					'grid grid-cols-[350px_1fr] gap-10 my-3 overflow-hidden'
+					'grid lg:grid-cols-[350px_1fr] gap-10 my-3 overflow-hidden'
 				)}
 			>
-				<div className='flex flex-col gap-y-3 '>
+				<div className='flex flex-col gap-y-3 justify-center items-center lg:justify-start '>
 					<Image
 						shadow='sm'
 						radius='lg'
 						alt='manga'
-						className='w-full object-cover h-[500px] z-0 '
+						className='lg:w-full object-cover h-[200px] w-[130px] lg:h-[500px] z-0 '
 						width='100%'
 						src={`${process.env.NEXT_PUBLIC_IMG_URL}/${
 							query.data?.posters?.medium.url ?? ''
 						}`}
 					/>
 
-					<div className=' flex gap-3 items-center ml-2'>
+					<div className=' flex gap-3 items-center'>
 						<MdBookmarks size={22} className='text-white/60' />{' '}
 						<strong className=' text-base font-light flex items-center'>
 							В избранных:{' '}

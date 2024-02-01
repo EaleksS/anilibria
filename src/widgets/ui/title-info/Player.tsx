@@ -42,7 +42,7 @@ export const Player: React.FC<PlayerProps> = ({ ...props }) => {
 
 	return (
 		<>
-			<div className='flex gap-3 w-[500px]'>
+			<div className='flex gap-3 flex-wrap md:flex-nowrap w-full lg:w-[500px]'>
 				<Select
 					label='Серия'
 					variant='bordered'
@@ -57,7 +57,7 @@ export const Player: React.FC<PlayerProps> = ({ ...props }) => {
 					size='sm'
 				>
 					{episodesData.map(episode => (
-						<SelectItem key={episode.value} value={episode.value} >
+						<SelectItem key={episode.value} value={episode.value}>
 							{episode.label}
 						</SelectItem>
 					))}
