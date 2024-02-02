@@ -11,7 +11,7 @@ export const useUpdatesTitleQuery = (
 		queryKey: ['updates', sort],
 		queryFn: () => getAnilibria.updates(sort),
 		refetchOnWindowFocus: true,
-		enabled: options ? options?.enabled : true,
+		enabled: options ? options?.enabled : true
 	})
 
 	return query
