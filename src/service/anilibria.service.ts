@@ -19,4 +19,9 @@ export const getAnilibria = {
 			.get(`/title/random${!!sort ? sort : ''}`)
 			.then(res => res.data)) as TitleT
 	},
+	async updates(sort?: string) {
+		return (await axios
+			.get(`/title/updates${!!sort ? sort : ''}`)
+			.then(res => res.data)) as TitlesDataT
+	},
 }

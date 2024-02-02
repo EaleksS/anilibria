@@ -3,14 +3,13 @@ import {
 	Card,
 	CardBody,
 	CardFooter,
-	CardHeader,
 	Image,
 	Link,
 	Skeleton,
 } from '@nextui-org/react'
 import React from 'react'
 
-export const PostCardLoading = () => {
+export const PostCardVerticalLoading = () => {
 	return (
 		<Card
 			shadow='sm'
@@ -19,7 +18,7 @@ export const PostCardLoading = () => {
 			fullWidth
 		>
 			<CardBody className='p-0'>
-			<Skeleton className='w-full h-[300px] rounded-lg'>
+				<Skeleton className='w-full h-[300px] rounded-lg'>
 					<div className='w-full h-3 rounded-lg bg-default-300'></div>
 				</Skeleton>
 			</CardBody>
@@ -35,7 +34,7 @@ export const PostCardLoading = () => {
 	)
 }
 
-export const PostCard: React.FC<TitleT> = ({ ...props }) => {
+export const PostCardVertical: React.FC<TitleT> = ({ ...props }) => {
 	return (
 		<Card
 			shadow='sm'
@@ -46,32 +45,25 @@ export const PostCard: React.FC<TitleT> = ({ ...props }) => {
 			onPress={() => console.log('item pressed')}
 			fullWidth
 		>
-			<CardHeader className=' overflow-hidden py-1 absolute rounded-large top-1 shadow-small left-1 z-10 w-max bg-gray-700'>
-				<p className='text-tiny'>{props?.status?.string ?? '-'}</p>
-			</CardHeader>
-			<CardHeader className=' overflow-hidden py-1 absolute rounded-large top-1 shadow-small right-1 z-10 w-max bg-gray-700'>
-				<p className='text-tiny'>{props?.season?.year ?? '-'}</p>
-			</CardHeader>
-			<CardBody className='p-0'>
+			<CardBody className='grid grid-cols-[140px_1fr] gap-3'>
 				<Image
 					shadow='sm'
 					radius='lg'
 					alt='manga'
-					className='w-full object-cover h-[200px] z-0 sm:h-[300px]'
+					className='w-full object-cover h-[100px] z-0 sm:h-[200px]'
 					width='100%'
 					src={`${process.env.NEXT_PUBLIC_IMG_URL}/${
 						props?.posters?.medium.url ?? '-'
 					}`}
 				/>
+				<div className='flex flex-col justify-center'>
+					<h1 className='text-xl'>{props?.names?.ru}</h1>
+					<p className='text-base text-white/80'>
+						{props?.player?.episodes?.last} серия добавлена
+					</p>
+					<p>{new Date(props?.last_change).toLocaleString()}</p>
+				</div>
 			</CardBody>
-			<CardFooter className='block'>
-				<h2 className='text-small whitespace-nowrap truncate'>
-					{props?.names.ru}
-				</h2>
-				<h3 className='text-tiny text-white/60'>
-					{props?.type?.full_string ?? '-'}
-				</h3>
-			</CardFooter>
 		</Card>
 	)
 }
