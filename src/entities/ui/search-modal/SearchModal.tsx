@@ -9,6 +9,7 @@ import {
 	ModalFooter,
 	ModalHeader,
 } from '@nextui-org/react'
+import { useIsFetching } from '@tanstack/react-query'
 import React from 'react'
 import { PostCard, PostCardLoading } from '../post-card/PostCard'
 
@@ -25,6 +26,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 }) => {
 	const [filter, setFilter] = React.useState<string>('')
 	const deferredText = React.useDeferredValue(filter)
+
+	const countFetching = useIsFetching({
+		queryKey: [`?search=${deferredText}&limit=20&items_per_page=20`],
+	})
+
 	const query = useMangaQuery(
 		`?search=${deferredText}&limit=20&items_per_page=20`
 	)
@@ -61,7 +67,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 								{!query.isLoading &&
 									!query.data?.pagination.total_items &&
 									(filter ? <p>Ничего не найдно</p> : <p>Введите в поиск</p>)}
-								{query.isLoading
+								{!!countFetching
 									? [1, 2, 3, 4, 5].map(e => <PostCardLoading key={e} />)
 									: query.data?.list?.map(anime => (
 											<PostCard {...anime} key={anime.id} />
