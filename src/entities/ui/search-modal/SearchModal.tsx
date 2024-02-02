@@ -15,11 +15,13 @@ import { PostCard, PostCardLoading } from '../post-card/PostCard'
 interface SearchModalProps {
 	isOpen: boolean
 	onOpenChange: () => void
+	setRenderModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
 	isOpen,
 	onOpenChange,
+	setRenderModal,
 }) => {
 	const [filter, setFilter] = React.useState<string>('')
 	const deferredText = React.useDeferredValue(filter)
@@ -33,6 +35,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 			onOpenChange={onOpenChange}
 			scrollBehavior='outside'
 			size='5xl'
+			onClose={() => {
+				setTimeout(() => {
+					setRenderModal(false)
+				}, 300)
+			}}
 		>
 			<ModalContent>
 				{onClose => (

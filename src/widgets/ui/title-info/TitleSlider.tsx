@@ -15,7 +15,8 @@ interface TitleSliderProps {
 
 export const TitleSlider: React.FC<TitleSliderProps> = ({ ...props }) => {
 	const query = useMangaQuery(
-		`?genres=${props.genres?.join(',')}&limit=21&items_per_page=21`
+		`?genres=${props.genres?.join(',')}&limit=21&items_per_page=21`,
+		{ enabled: !!props.genres }
 	)
 
 	const data = query.data?.list?.filter(f => f.id !== props.id)

@@ -52,7 +52,7 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 						alt='manga'
 						className='lg:w-full object-cover h-[200px] w-[130px] lg:h-[500px] z-0 '
 						width='100%'
-						src={`${process.env.NEXT_PUBLIC_IMG_URL}/${
+						src={`${process.env.NEXT_PUBLIC_IMG_URL}${
 							query.data?.posters?.medium.url ?? ''
 						}`}
 					/>

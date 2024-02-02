@@ -7,15 +7,25 @@ import React from 'react'
 
 export const SearchButton: React.FC = () => {
 	const { isOpen, onOpenChange } = useDisclosure()
+	const [renderModal, setRenderModal] = React.useState<boolean>(false)
 
 	return (
 		<>
-			<SearchModal isOpen={isOpen} onOpenChange={onOpenChange} />
+			{renderModal && (
+				<SearchModal
+					isOpen={isOpen}
+					onOpenChange={onOpenChange}
+					setRenderModal={setRenderModal}
+				/>
+			)}
 			<Button
 				variant='light'
 				size='sm'
 				startContent={<SearchIcon size={18} fill='#fff' />}
-				onPress={onOpenChange}
+				onPress={() => {
+					setRenderModal(true)
+					onOpenChange()
+				}}
 			>
 				ПОИСК
 			</Button>
