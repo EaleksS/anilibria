@@ -141,6 +141,7 @@ export type torrentListT = {
 	raw_base64_file: string
 	metadata: metadataT
 	hash: string
+	magnet: string
 }
 
 export type qualityT = {

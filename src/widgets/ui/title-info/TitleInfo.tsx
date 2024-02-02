@@ -7,6 +7,7 @@ import React from 'react'
 import { MdBookmarks } from 'react-icons/md'
 import { Player } from './Player'
 import { TitleSlider } from './TitleSlider'
+import { Torrent } from './Torrent'
 
 interface TitleInfoProps {
 	code: string
@@ -133,6 +134,7 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 					</div>
 				</div>
 			</div>
+			<Torrent torrents={query.data?.torrents} isLoading={query.isLoading} />
 			<TitleSlider genres={query.data?.genres} id={query.data?.id} />
 		</>
 	)
