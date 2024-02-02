@@ -1,5 +1,6 @@
 import { getAnilibria } from '@/service/anilibria.service'
 import { Metadata } from 'next'
+import React from 'react'
 
 async function getTitle(code: string) {
 	try {
@@ -54,21 +55,6 @@ export async function generateMetadataProps({
 				},
 			],
 		},
-	}
-
-	return metadata
-}
-
-interface generateMetadataProps {
-	params: { code: string }
-}
-
-export async function generateMetadata({
-	params: { code },
-}: generateMetadataProps) {
-	const metadata: Metadata = {
-		title: code,
-		description: code,
 	}
 
 	return metadata
