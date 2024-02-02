@@ -10,7 +10,7 @@ export const MainUpdate: React.FC = () => {
 	return (
 		<div>
 			<h3>Последние обновленные аниме</h3>
-			<div className='grid grid-cols-2 gap-3'>
+			<div className='grid grid-cols-2 gap-3 mt-3'>
 				{query.data?.list.map(e => (
 					<PostCardVertical {...e} key={e.id} />
 				))}
