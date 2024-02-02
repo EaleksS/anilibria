@@ -24,6 +24,7 @@ export const UiDropdown: React.FC = () => {
 							src='https://remanga.org/media/users/64148/avatar_3HsytPG.jpg'
 							width='100'
 							height='100'
+							alt='profile'
 						/>
 					</Button>
 				</DropdownTrigger>
