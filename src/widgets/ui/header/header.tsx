@@ -11,7 +11,11 @@ import React from 'react'
 import { UiDropdown } from './Dropdown'
 import { SearchButton } from './SearchButton'
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+	session: string
+}
+
+export const Header: React.FC<HeaderProps> = ({ session }) => {
 	return (
 		<Navbar
 			shouldHideOnScroll
@@ -26,8 +30,13 @@ export const Header: React.FC = () => {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Button as={Link} variant='light' href='/' size='sm'>
+					<Button as={Link} variant='light' href='/catalog' size='sm'>
 						КАТАЛОГ
+					</Button>
+				</NavbarItem>
+				<NavbarItem>
+					<Button as={Link} variant='light' href='/schedule' size='sm'>
+						РАСПИСАНИЕ
 					</Button>
 				</NavbarItem>
 				<NavbarItem>
@@ -36,7 +45,7 @@ export const Header: React.FC = () => {
 			</NavbarBrand>
 			<NavbarContent justify='end'>
 				<NavbarItem>
-					<UiDropdown />
+					<UiDropdown session={session} />
 				</NavbarItem>
 			</NavbarContent>
 		</Navbar>

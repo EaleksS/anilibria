@@ -4,6 +4,7 @@ import { Roboto } from 'next/font/google'
 import { Providers } from './provider'
 
 import clsx from 'clsx'
+import { cookies } from 'next/headers'
 import './globals.css'
 
 const roboto = Roboto({
@@ -21,11 +22,14 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	const cookieStore = cookies()
+	const session = cookieStore.get('session')?.value ?? ''
+
 	return (
 		<html lang='ru' className='dark bg-dark'>
 			<body className={clsx(roboto.className, 'min-h-[100dvh]')}>
 				<Providers>
-					<Header />
+					<Header session={session} />
 					{children}
 					{/* <Footer /> */}
 				</Providers>

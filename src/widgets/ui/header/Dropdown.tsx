@@ -1,5 +1,7 @@
 'use client'
 
+import { useFavoriteQuery } from '@/libs/hook/query/useFavoriteQuery'
+import { useUserQuery } from '@/libs/hook/query/useUserQuery'
 import {
 	Button,
 	Dropdown,
@@ -8,9 +10,30 @@ import {
 	DropdownSection,
 	DropdownTrigger,
 	Image,
+	Link,
 } from '@nextui-org/react'
+import React from 'react'
 
-export const UiDropdown: React.FC = () => {
+interface UiDropdownProps {
+	session: string
+}
+
+export const UiDropdown: React.FC<UiDropdownProps> = ({ session }) => {
+	const query = useUserQuery(session)
+	const queryFavorite = useFavoriteQuery(session)
+
+	if (!session)
+		return (
+			<Button
+				variant='flat'
+				className='rounded-full overflow-hidden'
+				as={Link}
+				href='/auth'
+			>
+				Войти
+			</Button>
+		)
+
 	return (
 		<>
 			<Dropdown>
@@ -21,7 +44,9 @@ export const UiDropdown: React.FC = () => {
 						className='rounded-full overflow-hidden'
 					>
 						<Image
-							src='https://remanga.org/media/users/64148/avatar_3HsytPG.jpg'
+							src={`${process.env.NEXT_PUBLIC_IMG_URL}${
+								query?.data?.avatar_original ?? query?.data?.avatar_thumbnail
+							}`}
 							width='100'
 							height='100'
 							alt='profile'
@@ -33,25 +58,37 @@ export const UiDropdown: React.FC = () => {
 					aria-label='Dropdown menu with description'
 					closeOnSelect
 				>
-					<DropdownSection title={'ADMIN'} showDivider>
+					<DropdownSection title={query?.data?.email ?? '-'} showDivider>
 						<DropdownItem key='profile' className='h-14 gap-2'>
 							<p className='font-semibold'>Вошёл как</p>
-							<p>{'Эрнест'}</p>
+							<p>{query?.data?.login ?? '-'}</p>
 						</DropdownItem>
 					</DropdownSection>
 					<DropdownSection title='Информация'>
 						<DropdownItem key='chatID' description='В избранных'>
-							<p className='font-semibold'>#1020123</p>
+							<p className='font-semibold'>
+								#{queryFavorite.data?.pagination?.total_items}
+							</p>
 						</DropdownItem>
 					</DropdownSection>
 					<DropdownSection title='Действие'>
 						<DropdownItem
-							key='change-chatId'
+							key='change-chatId1'
 							className='text-primary'
 							color='primary'
-							href='/user/favorite'
+							href='/favorite'
 						>
 							Перейти в избранные
+						</DropdownItem>
+						<DropdownItem
+							key='change-chatId2'
+							className='text-danger'
+							color='danger'
+							onPress={() => {
+								// localStorage.removeItem('session')
+							}}
+						>
+							Выйти из аккаунта
 						</DropdownItem>
 					</DropdownSection>
 				</DropdownMenu>
