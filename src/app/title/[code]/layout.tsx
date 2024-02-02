@@ -1,62 +1,63 @@
-// async function getTitle(code: string) {
-// 	try {
-// 		return await getAnilibria
-// 			.title(`?code=${code}`)
-// 			.then(res => res)
-// 			.catch((err: Error) => {
-// 				throw new Error(err.message)
-// 			})
-// 	} catch (error) {
-// 		console.error(error)
-
+import { getAnilibria } from '@/service/anilibria.service'
 import { Metadata } from 'next'
 
-// 		return null
-// 	}
-// }
+async function getTitle(code: string) {
+	try {
+		return await getAnilibria
+			.title(`?code=${code}`)
+			.then(res => res)
+			.catch((err: Error) => {
+				throw new Error(err.message)
+			})
+	} catch (error) {
+		console.error(error)
 
-// interface generateMetadataProps {
-// 	params: { code: string }
-// }
+		return null
+	}
+}
 
-// export async function generateMetadata({
-// 	params: { code },
-// }: generateMetadataProps) {
-// 	const data = await getTitle(code)
+interface generateMetadataProps {
+	params: { code: string }
+}
 
-// 	const metadata: Metadata = {
-// 		title: data?.names?.ru ?? code,
-// 		description: String(data?.description ?? code),
-// 		openGraph: {
-// 			images: [
-// 				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-// 				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.medium.url,
-// 				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.original.url,
-// 			],
-// 			description: String(data?.description ?? code),
-// 			title: data?.names?.ru ?? code,
-// 			type: 'website',
-// 			url: `/title/${code}`,
-// 		},
+export async function generateMetadataProps({
+	params: { code },
+}: generateMetadataProps) {
+	const data = await getTitle(code)
 
-// 		icons: {
-// 			icon: [
-// 				{
-// 					media: '(prefers-color-scheme: light)',
-// 					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-// 					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-// 				},
-// 				{
-// 					media: '(prefers-color-scheme: dark)',
-// 					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-// 					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-// 				},
-// 			],
-// 		},
-// 	}
+	const metadata: Metadata = {
+		title: data?.names?.ru ?? code,
+		description: String(data?.description ?? code),
+		openGraph: {
+			images: [
+				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.medium.url,
+				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.original.url,
+			],
+			description: String(data?.description ?? code),
+			title: data?.names?.ru ?? code,
+			type: 'website',
+			url: `/title/${code}`,
+		},
 
-// 	return metadata
-// }
+		icons: {
+			icon: [
+				{
+					media: '(prefers-color-scheme: light)',
+					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+				},
+				{
+					media: '(prefers-color-scheme: dark)',
+					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+				},
+			],
+		},
+	}
+
+	return metadata
+}
 
 interface generateMetadataProps {
 	params: { code: string }
