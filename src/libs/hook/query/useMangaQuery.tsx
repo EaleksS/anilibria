@@ -1,22 +1,16 @@
 import { getAnilibria } from '@/service/anilibria.service'
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import useQueryParams from '../useQueryParams'
 
-export const useMangaQuery = (
-	sort?: string,
-	options?: {
-		enabled?: boolean
-	}
-) => {
+export const useMangaQuery = (sort?: string) => {
 	const { searchQueryParams } = useQueryParams()
 
 	const params = searchQueryParams([''])
 
-	const query = useQuery({
+	const query = useSuspenseQuery({
 		queryKey: ['filter', params, sort],
 		queryFn: () => getAnilibria.search(params, sort),
 		refetchOnWindowFocus: true,
-		enabled: options ? options?.enabled : true,
 	})
 
 	return query

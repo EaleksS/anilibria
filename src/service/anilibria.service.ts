@@ -27,7 +27,7 @@ export const getAnilibria = {
 	},
 }
 
-const base_url = 'https://anilibria-dun.vercel.app'
+const base_url = 'https://anilibria.onrender.com'
 
 export const authAnilibria = {
 	async login(data: { mail: string; passwd: string }) {

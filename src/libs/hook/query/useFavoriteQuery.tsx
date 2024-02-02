@@ -1,12 +1,11 @@
 import { authAnilibria } from '@/service/anilibria.service'
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
 export const useFavoriteQuery = (session: string) => {
-	const query = useQuery({
+	const query = useSuspenseQuery({
 		queryKey: ['favorite'],
 		queryFn: () => authAnilibria.favorites(session),
 		refetchOnWindowFocus: true,
-		enabled: !!session,
 	})
 
 	return query
