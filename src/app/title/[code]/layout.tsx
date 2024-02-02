@@ -21,7 +21,7 @@ interface generateMetadataProps {
 	params: { code: string }
 }
 
-export async function generateMetadataProps({
+export async function generateMetadata({
 	params: { code },
 }: generateMetadataProps) {
 	const data = await getTitle(code)
