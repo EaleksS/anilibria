@@ -1,8 +1,6 @@
 import { LogoIcon } from '@/images/LogoIcon'
-import { SearchIcon } from '@/images/SearchIcon'
 import {
 	Button,
-	Image,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
@@ -11,6 +9,7 @@ import {
 import Link from 'next/link'
 import React from 'react'
 import { UiDropdown } from './Dropdown'
+import { SearchButton } from './SearchButton'
 
 export const Header: React.FC = () => {
 	return (
@@ -32,18 +31,11 @@ export const Header: React.FC = () => {
 					</Button>
 				</NavbarItem>
 				<NavbarItem>
-					<Button
-						variant='light'
-						size='sm'
-						startContent={<SearchIcon size={18} fill='#fff' />}
-					>
-						ПОИСК
-					</Button>
+					<SearchButton />
 				</NavbarItem>
 			</NavbarBrand>
 			<NavbarContent justify='end'>
 				<NavbarItem>
-					
 					<UiDropdown />
 				</NavbarItem>
 			</NavbarContent>

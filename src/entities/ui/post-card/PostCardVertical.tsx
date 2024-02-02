@@ -1,8 +1,10 @@
+import { fToNow } from '@/libs/utils/formatTime'
 import { TitleT } from '@/types'
 import {
 	Card,
 	CardBody,
 	CardFooter,
+	CardHeader,
 	Image,
 	Link,
 	Skeleton,
@@ -34,7 +36,13 @@ export const PostCardVerticalLoading = () => {
 	)
 }
 
-export const PostCardVertical: React.FC<TitleT> = ({ ...props }) => {
+interface PostCardVerticalProps extends TitleT {
+	index?: number
+}
+
+export const PostCardVertical: React.FC<PostCardVerticalProps> = ({
+	...props
+}) => {
 	return (
 		<Card
 			shadow='sm'
@@ -57,13 +65,18 @@ export const PostCardVertical: React.FC<TitleT> = ({ ...props }) => {
 					}`}
 				/>
 				<div className='flex flex-col justify-center'>
-					<h1 className='text-xl'>{props?.names?.ru}</h1>
+					<h1 className='text-xl font-semibold'>{props?.names?.ru}</h1>
 					<p className='text-base text-white/80'>
 						{props?.player?.episodes?.last} серия добавлена
 					</p>
-					<p>{new Date(props?.last_change).toLocaleString()}</p>
+					<p className='text-tiny text-white/60 font-light'>
+						{fToNow(new Date(props?.last_change * 1000))}
+					</p>
 				</div>
 			</CardBody>
+			<CardHeader className=' absolute top-3 right-3 h-8 w-8 rounded-full bg-white/5 flex items-center justify-center'>
+				{(props?.index ?? 0) + 1}
+			</CardHeader>
 		</Card>
 	)
 }

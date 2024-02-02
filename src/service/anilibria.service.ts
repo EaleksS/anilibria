@@ -21,7 +21,7 @@ export const getAnilibria = {
 	},
 	async updates(sort?: string) {
 		return (await axios
-			.get(`/title/updates${!!sort ? sort : ''}`)
+			.get(`/title/changes${!!sort ? sort : ''}`)
 			.then(res => res.data)) as TitlesDataT
 	},
 }
