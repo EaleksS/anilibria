@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 		}
 
 		return await axios
-			.post(`https://dl-20240202-9.anilib.one/public/login.php`, form)
+			.post(`https://anilibria.tv/public/login.php`, form)
 			.then(res => {
 				const cookieStore = cookies()
 				cookieStore.set('session', res.data.sessionId, { secure: true })

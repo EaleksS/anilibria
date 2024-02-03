@@ -1,5 +1,5 @@
 import { EyeFilledIcon, EyeSlashFilledIcon, MailIcon, PassIcon } from '@/images'
-import { authAnilibria } from '@/service/anilibria.service'
+import { authAnilibria } from '@/service/auth.service'
 import { Button, Input } from '@nextui-org/react'
 import React from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'

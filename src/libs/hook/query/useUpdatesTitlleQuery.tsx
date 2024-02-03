@@ -1,8 +1,8 @@
 import { getAnilibria } from '@/service/anilibria.service'
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 export const useUpdatesTitleQuery = (sort?: string) => {
-	const query = useSuspenseQuery({
+	const query = useQuery({
 		queryKey: ['updates', sort],
 		queryFn: () => getAnilibria.updates(sort),
 		refetchOnWindowFocus: true,
