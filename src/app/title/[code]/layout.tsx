@@ -25,6 +25,7 @@ export async function generateMetadata({
 	params: { code },
 }: generateMetadataProps) {
 	const data = await getTitle(code)
+	
 
 	const metadata: Metadata = {
 		title: data?.names?.ru ?? code,
