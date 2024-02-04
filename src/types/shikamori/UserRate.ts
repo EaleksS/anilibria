@@ -1,7 +1,6 @@
 import { DateTime } from "./common";
 import { AnimeBasic, AnimeId } from "./Anime";
 import { MangaBasic, MangaId } from "./Manga";
-import { RanobeId } from "./Ranobe";
 import { UserBasic, UserId } from "./User";
 
 export type UserRateId = number;
@@ -10,7 +9,7 @@ export type UserRateStatus = 'planned' | 'watching' | 'completed' | 'rewatching'
 export interface UserRate {
   id: UserRateId,
   user_id: UserId,
-  target_id: AnimeId | MangaId | RanobeId,
+  target_id: AnimeId | MangaId,
   target_type: 'Anime' | 'Manga',
   score: number,
   status: UserRateStatus,
@@ -32,7 +31,7 @@ export interface UserRateExtended<T extends AnimeBasic | MangaBasic> extends Use
 
 export interface UserRateTemplate {
   user_id: UserId,
-  target_id: AnimeId | MangaId | RanobeId,
+  target_id: AnimeId | MangaId ,
   target_type: 'Anime' | 'Manga',
   score?: number,
   status?: UserRateStatus,
