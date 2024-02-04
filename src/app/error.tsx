@@ -23,10 +23,14 @@ export default function Error({ error, reset }: Props) {
 					: error.message}
 			</p>
 			<ButtonGroup>
-				<Button variant='flat' color='primary' onClick={() => router.back()}>
+				<Button
+					variant='bordered'
+					color='primary'
+					onClick={() => router.back()}
+				>
 					Назад
 				</Button>
-				<Button variant='flat' color='primary' as={Link} href='/'>
+				<Button variant='solid' color='primary' as={Link} href='/'>
 					Главная страница
 				</Button>
 			</ButtonGroup>
