@@ -12,6 +12,7 @@ interface PlayerProps {
 	player?: playerT
 	isLoading?: boolean
 	shikamory?: Video[]
+	poster?: string
 }
 
 interface IEpisodesData {
@@ -123,7 +124,9 @@ export const Player: React.FC<PlayerProps> = ({ ...props }) => {
 								onPause={() => {}}
 								onPlay={() => {}}
 								light={`${process.env.NEXT_PUBLIC_IMG_URL}/${
-									props?.player?.list[episodes ?? '1'].preview ?? ''
+									props?.player?.list[episodes ?? '1'].preview ??
+									props?.poster ??
+									''
 								}`}
 								url={`https://${props?.player?.host}${
 									props?.player?.list[episodes ?? '1']?.hls?.[hls ?? 'sd']

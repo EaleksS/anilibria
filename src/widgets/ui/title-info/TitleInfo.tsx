@@ -107,6 +107,7 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code, idShikamori }) => {
 							player={query.data?.player}
 							isLoading={query.isLoading}
 							shikamory={queryShikamori?.data?.videos}
+							poster={`${query.data?.posters?.medium.url ?? ''}`}
 						/>
 					</div>
 				</div>
