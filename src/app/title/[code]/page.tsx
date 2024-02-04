@@ -8,7 +8,7 @@ interface TitlePageProps {
 	}
 }
 
-interface Mapped {
+export interface Mapped {
 	anilibria_id: number
 	myanimelist_id: number
 }
