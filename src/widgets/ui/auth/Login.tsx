@@ -1,3 +1,5 @@
+'use client'
+
 import { EyeFilledIcon, EyeSlashFilledIcon, MailIcon, PassIcon } from '@/images'
 import { authAnilibria } from '@/service/auth.service'
 import { Button, Input } from '@nextui-org/react'
@@ -40,8 +42,15 @@ export const Login: React.FC = () => {
 			.then(res => {
 				if (res.err === 'ok') {
 					toast.success(`${res?.mes}`)
-					localStorage.setItem('session', res?.sessionId)
-					return router.push('/')
+					;(async () => {
+						await authAnilibria.loginSession({ session: res?.sessionId })
+					})()
+
+					setTimeout(() => {
+						router.push('/')
+					}, 100)
+
+					return
 				}
 
 				toast.error(`${res?.mes}`)

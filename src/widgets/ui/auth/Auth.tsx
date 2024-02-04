@@ -1,33 +1,18 @@
-'use client'
-
-import { Card, CardBody, CardHeader, Tab, Tabs } from '@nextui-org/react'
-import { Key } from '@react-types/shared'
+import { Card, CardBody, CardHeader } from '@nextui-org/react'
 import React from 'react'
 import { Login } from './Login'
-import { Register } from './Register'
 
 export const Auth: React.FC = () => {
-	const [selected, setSelected] = React.useState<Key>('login')
-
 	return (
 		<div className='max-w-[400px] mx-auto mt-60'>
-			<Card className='max-w-full h-[400px]'>
-				<CardHeader>Добро пожаловать в api anilibria</CardHeader>
+			<Card className='max-w-full'>
+				<CardHeader>
+					<h1 className='text-xl font-semibold text-center w-full'>
+						Добро пожаловать
+					</h1>
+				</CardHeader>
 				<CardBody className='overflow-hidden'>
-					<Tabs
-						fullWidth
-						size='md'
-						aria-label='Tabs form'
-						selectedKey={selected}
-						onSelectionChange={setSelected}
-					>
-						<Tab key='login' title='Войти'>
-							<Login />
-						</Tab>
-						<Tab key='sign-up' title='Регистрация'>
-							<Register />
-						</Tab>
-					</Tabs>
+					<Login />
 				</CardBody>
 			</Card>
 		</div>

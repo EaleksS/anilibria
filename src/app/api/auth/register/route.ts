@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 		}
 
 		return await axios
-			.post(`https://anilibria.tv/public/registration.php`, form)
+			.post(`https://dl-20240202-9.anilib.one/public/registration.php`, form)
 			.then(res => {
 				return NextResponse.json({
 					...res.data,

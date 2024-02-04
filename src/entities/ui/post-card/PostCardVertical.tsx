@@ -47,7 +47,7 @@ export const PostCardVertical: React.FC<PostCardVerticalProps> = ({
 		<Card
 			shadow='sm'
 			as={Link}
-			href={`/title/${props.code}`}
+			href={`/title/${props.id}-${props.code}`}
 			isPressable
 			className=' relative'
 			onPress={() => console.log('item pressed')}

@@ -1,26 +1,20 @@
 import axios from 'axios'
 
+const form = new FormData()
+
 export const authAnilibria = {
 	async login(data: { mail: string; passwd: string }) {
+		form.append('mail', data.mail)
+		form.append('passwd', data.passwd)
+
 		return await axios
-			.post(`${window.origin}/api/auth/login`, {
-				mail: data.mail,
-				passwd: data.passwd,
-			})
+			.post(`https://dl-20240202-9.anilib.one/public/login.php`, form)
 			.then(res => res.data)
 	},
-	async registration(data: {
-		login: string
-		mail: string
-		passwd: string
-		token: string
-	}) {
+	async loginSession(data: { session: string }) {
 		return await axios
-			.post(`/api/auth/register`, {
-				login: data.login,
-				mail: data.mail,
-				passwd: data.passwd,
-				token: data.token,
+			.post(`${origin}/api/auth/login`, {
+				session: data.session,
 			})
 			.then(res => res.data)
 	},

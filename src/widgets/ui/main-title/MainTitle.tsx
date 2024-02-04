@@ -48,7 +48,10 @@ export const MainTitle: React.FC = () => {
 				</h1>
 				<p className='text-small'>{String(query?.data?.description ?? '-')}</p>
 				<ButtonGroup radius='full' variant='solid' color='primary'>
-					<Button as={Link} href={`/title/${query?.data?.code}`}>
+					<Button
+						as={Link}
+						href={`/title/${query?.data?.id}-${query?.data?.code}`}
+					>
 						Смотреть
 					</Button>
 					<Button variant='flat'>Добавить в избранные</Button>

@@ -38,19 +38,9 @@ export const authAnilibria = {
 			})
 			.then(res => res.data)
 	},
-	async registration(data: {
-		login: string
-		mail: string
-		passwd: string
-		token: string
-	}) {
+	async logout() {
 		return await axios
-			.post(`${base_url}/api/auth/register`, {
-				login: data.login,
-				mail: data.mail,
-				passwd: data.passwd,
-				token: data.token,
-			})
+			.get(`${window.origin}/api/auth/logout`)
 			.then(res => res.data)
 	},
 	async user(session: string) {

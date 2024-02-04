@@ -1,35 +1,45 @@
-import axios from 'axios'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
 interface Data {
-	mail: string
-	passwd: string
+	session: string
 }
+
 export async function POST(req: Request) {
 	try {
-		const data: any = await req.json()
+		// const header = headers()
+		// const header2 = headers().entries()
+		// console.log('1', header)
+		// console.log('2', header2)
 
-		const form = new FormData()
-		for (const key in data) {
-			form.append(key, data[key])
-		}
+		const data: Data = await req.json()
 
-		return await axios
-			.post(`https://anilibria.tv/public/login.php`, form)
-			.then(res => {
-				const cookieStore = cookies()
-				cookieStore.set('session', res.data.sessionId, { secure: true })
+		const cookieStore = cookies()
+		cookieStore.set('session', data.session, { secure: true })
 
-				return NextResponse.json({
-					...res.data,
-				})
-			})
-			.catch((err: Error) => {
-				return NextResponse.json({
-					message: err.message,
-				})
-			})
+		// TODO: Доделать
+		// return await axios
+		// 	.post(
+		// 		`https://dl-20240202-9.anilib.one/public/login.php`,
+		// 		{},
+		// 		{ headers:  ...header.entries().toString()  }
+		// 	)
+		// 	.then(res => {
+		// 		const cookieStore = cookies()
+		// 		cookieStore.set('session', res.data.sessionId, { secure: true })
+
+		// 		return NextResponse.json({
+		// 			...res.data,
+		// 		})
+		// 	})
+		// 	.catch((err: Error) => {
+		// 		return NextResponse.json({
+		// 			message: err.message,
+		// 		})
+		// 	})
+
+		return redirect('/')
 	} catch (err) {
 		return NextResponse.json({ message: 'Internal server error' })
 	}

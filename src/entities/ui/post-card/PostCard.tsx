@@ -19,7 +19,7 @@ export const PostCardLoading = () => {
 			fullWidth
 		>
 			<CardBody className='p-0'>
-			<Skeleton className='w-full h-[300px] rounded-lg'>
+				<Skeleton className='w-full h-[300px] rounded-lg'>
 					<div className='w-full h-3 rounded-lg bg-default-300'></div>
 				</Skeleton>
 			</CardBody>
@@ -40,7 +40,7 @@ export const PostCard: React.FC<TitleT> = ({ ...props }) => {
 		<Card
 			shadow='sm'
 			as={Link}
-			href={`/title/${props.code}`}
+			href={`/title/${props.id}-${props.code}`}
 			isPressable
 			className=' relative'
 			onPress={() => console.log('item pressed')}

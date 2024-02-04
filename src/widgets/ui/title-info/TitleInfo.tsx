@@ -1,7 +1,8 @@
 'use client'
 
+import { useAnimasIDQuery } from '@/libs/hook/query/useAnimasIDQuery'
 import { useTitleQuery } from '@/libs/hook/query/useTitlleQuery'
-import { Button, Image } from '@nextui-org/react'
+import { Image } from '@nextui-org/react'
 import clsx from 'clsx'
 import React from 'react'
 import { MdBookmarks } from 'react-icons/md'
@@ -11,10 +12,14 @@ import { Torrent } from './Torrent'
 
 interface TitleInfoProps {
 	code: string
+	idShikamori: number
 }
 
-export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
+export const TitleInfo: React.FC<TitleInfoProps> = ({ code, idShikamori }) => {
 	const query = useTitleQuery(`?code=${code}`)
+	const queryShikamori = useAnimasIDQuery(idShikamori)
+
+	console.log(idShikamori)
 
 	return (
 		<>
@@ -42,9 +47,11 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 						</strong>
 					</div>
 
-					<Button variant='solid' radius='full' color='primary'>
+					{/* <Button variant='solid' radius='full' color='primary'>
+						TODO: Добавить функционал
+
 						Добавить в избранные
-					</Button>
+					</Button> */}
 				</div>
 				<div>
 					<div className='flex flex-col gap-3 items-start relative z-10 p-3 bg-black/20 rounded-large h-max backdrop-blur-sm'>
@@ -96,7 +103,11 @@ export const TitleInfo: React.FC<TitleInfoProps> = ({ code }) => {
 						</ul>
 					</div>
 					<div className='p-3 bg-black/20 rounded-large h-max backdrop-blur-sm mt-3 flex flex-col gap-3 items-start'>
-						<Player player={query.data?.player} isLoading={query.isLoading} />
+						<Player
+							player={query.data?.player}
+							isLoading={query.isLoading}
+							shikamory={queryShikamori?.data?.videos}
+						/>
 					</div>
 				</div>
 			</div>

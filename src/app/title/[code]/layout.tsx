@@ -1,11 +1,14 @@
-import { getAnilibria } from '@/service/anilibria.service'
+import { getShikamori } from '@/service/shikamori.service'
 import { Metadata } from 'next'
 import React from 'react'
+import { getID } from './page'
 
 async function getTitle(code: string) {
 	try {
-		return await getAnilibria
-			.title(`?code=${code}`)
+		const data = await getID(code)
+
+		return await getShikamori
+			.animesID(Number(data ?? 0))
 			.then(res => res)
 			.catch((err: Error) => {
 				throw new Error(err.message)
@@ -25,19 +28,17 @@ export async function generateMetadata({
 	params: { code },
 }: generateMetadataProps) {
 	const data = await getTitle(code)
-	
 
 	const metadata: Metadata = {
-		title: data?.names?.ru ?? code,
+		title: data?.russian ?? data?.name ?? code,
 		description: String(data?.description ?? code),
 		openGraph: {
 			images: [
-				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.medium.url,
-				`${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.original.url,
+				`${process.env.NEXT_PUBLIC_BASE_SHIKAMORI_URL}/` +
+					data?.image?.original,
 			],
 			description: String(data?.description ?? code),
-			title: data?.names?.ru ?? code,
+			title: data?.russian ?? data?.name ?? code,
 			type: 'website',
 			url: `/title/${code}`,
 		},
@@ -46,13 +47,21 @@ export async function generateMetadata({
 			icon: [
 				{
 					media: '(prefers-color-scheme: light)',
-					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+					url:
+						`${process.env.NEXT_PUBLIC_BASE_SHIKAMORI_URL}/` +
+						data?.image?.original,
+					href:
+						`${process.env.NEXT_PUBLIC_BASE_SHIKAMORI_URL}/` +
+						data?.image?.original,
 				},
 				{
 					media: '(prefers-color-scheme: dark)',
-					url: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
-					href: `${process.env.NEXT_PUBLIC_IMG_URL}/` + data?.posters.small.url,
+					url:
+						`${process.env.NEXT_PUBLIC_BASE_SHIKAMORI_URL}/` +
+						data?.image?.original,
+					href:
+						`${process.env.NEXT_PUBLIC_BASE_SHIKAMORI_URL}/` +
+						data?.image?.original,
 				},
 			],
 		},
