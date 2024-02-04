@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ session }) => {
 						<LogoIcon size={30} fill='#fff' />
 					</Link>
 				</NavbarItem>
-				<NavbarItem>
+				{/* <NavbarItem>
 					<Button as={Link} variant='light' href='/catalog' size='sm'>
 						КАТАЛОГ
 					</Button>
@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ session }) => {
 					<Button as={Link} variant='light' href='/schedule' size='sm'>
 						РАСПИСАНИЕ
 					</Button>
-				</NavbarItem>
+				</NavbarItem> */}
 				<NavbarItem>
 					<SearchButton />
 				</NavbarItem>
