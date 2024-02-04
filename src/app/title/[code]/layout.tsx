@@ -1,7 +1,7 @@
 import { getShikamori } from '@/service/shikamori.service'
 import { Metadata } from 'next'
 import React from 'react'
-import { getID } from './page'
+import { getID } from './getID'
 
 async function getTitle(code: string) {
 	try {
