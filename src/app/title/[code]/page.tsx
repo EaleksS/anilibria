@@ -8,6 +8,8 @@ interface TitlePageProps {
 	}
 }
 
+export const dynamic = 'force-dynamic'
+
 export interface Mapped {
 	anilibria_id: number
 	myanimelist_id: number
