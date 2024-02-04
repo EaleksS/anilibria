@@ -41,12 +41,12 @@ export const Player: React.FC<PlayerProps> = ({ ...props }) => {
 	})
 	if (props.isLoading) return <Spinner />
 
-	if (!props.player?.episodes.last) return 'К сожалению серий нету'
-
 	const youtubeShikamori = React.useMemo(
 		() => props?.shikamory?.filter(e => e.hosting === 'youtube'),
 		[props?.shikamory?.length]
 	)
+
+	if (!props.player?.episodes.last) return 'К сожалению серий нету'
 
 	return (
 		<>
